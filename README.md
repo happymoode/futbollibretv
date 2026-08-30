@@ -1,2 +1,0 @@
-# futbollibretv
-futbollibre tv
