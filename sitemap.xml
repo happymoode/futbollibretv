@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <!-- Homepage -->
+    <url>
+        <loc>https://futbollibre-tv.sx/</loc>
+        <lastmod>2026-08-25</lastmod>
+        <changefreq>hourly</changefreq>
+        <priority>1.0</priority>
+        <!-- Hreflang annotations for target countries -->
+        <xhtml:link rel="alternate" hreflang="es" href="https://futbollibre-tv.sx/" />
+        <xhtml:link rel="alternate" hreflang="es-ES" href="https://futbollibre-tv.sx/" />
+        <xhtml:link rel="alternate" hreflang="es-MX" href="https://futbollibre-tv.sx/" />
+        <xhtml:link rel="alternate" hreflang="es-CO" href="https://futbollibre-tv.sx/" />
+        <xhtml:link rel="alternate" hreflang="es-PE" href="https://futbollibre-tv.sx/" />
+        <xhtml:link rel="alternate" hreflang="es-EC" href="https://futbollibre-tv.sx/" />
+        <xhtml:link rel="alternate" hreflang="es-AR" href="https://futbollibre-tv.sx/" />
+        <xhtml:link rel="alternate" hreflang="es-CL" href="https://futbollibre-tv.sx/" />
+    </url>
+</urlset>
