@@ -705,7 +705,7 @@ textarea.form-control {
                 // Inject live stream player iframe
                 const iframe = document.createElement('iframe');
                 iframe.src = finalUrl;
-                iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms allow-presentation');
+                // NOTE: sandbox attribute removed — many streaming sites detect & block sandboxed iframes
                 iframe.setAttribute('allow', 'autoplay; encrypted-media; fullscreen; picture-in-picture');
                 iframe.setAttribute('allowfullscreen', 'true');
                 iframe.setAttribute('referrerpolicy', 'no-referrer');
