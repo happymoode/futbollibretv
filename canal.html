@@ -4,14 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Adcash AutoTag Monetization -->
-    <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
-    <script type="text/javascript">
-        aclib.runAutoTag({
-            zoneId: 'xmurh1mnjc',
-        });
-    </script>
-    
     <title>Canal Deportivo en Directo HD | Fútbol Libre HD</title>
     <!-- Prevent indexing of live player embeds -->
     <meta name="robots" content="noindex, nofollow">
@@ -713,8 +705,10 @@ textarea.form-control {
                 // Inject live stream player iframe
                 const iframe = document.createElement('iframe');
                 iframe.src = finalUrl;
+                iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms allow-presentation');
                 iframe.setAttribute('allow', 'autoplay; encrypted-media; fullscreen; picture-in-picture');
                 iframe.setAttribute('allowfullscreen', 'true');
+                iframe.setAttribute('referrerpolicy', 'no-referrer');
                 iframe.setAttribute('scrolling', 'no');
                 iframe.setAttribute('title', `Transmisión de ${canalNombre}`);
                 

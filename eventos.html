@@ -4,14 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Adcash AutoTag Monetization -->
-    <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
-    <script type="text/javascript">
-        aclib.runAutoTag({
-            zoneId: 'xmurh1mnjc',
-        });
-    </script>
-    
     <title>Partido en Directo HD | Fútbol Libre HD 2026</title>
     <!-- Prevent indexing of temporary live event player embeds -->
     <meta name="robots" content="noindex, nofollow">
@@ -716,8 +708,10 @@ textarea.form-control {
                     // Create & Inject live streaming Iframe Player
                     const iframe = document.createElement('iframe');
                     iframe.src = decodedUrl;
+                    iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms allow-presentation');
                     iframe.setAttribute('allow', 'autoplay; encrypted-media; fullscreen; picture-in-picture');
                     iframe.setAttribute('allowfullscreen', 'true');
+                    iframe.setAttribute('referrerpolicy', 'no-referrer');
                     iframe.setAttribute('scrolling', 'no');
                     iframe.setAttribute('title', 'Reproductor Fútbol Libre TV');
                     

@@ -13,9 +13,6 @@ const STREAM_CONFIG = {
     fallbackDomain: "",
     fallbackPath: "",
     
-    // Adcash AutoTag Zone ID
-    adcashZoneId: "xmurh1mnjc",
-    
     // Parámetros del reproductor iframe
     allowFullscreen: true,
     allowAutoplay: true,

@@ -37,6 +37,8 @@ $flagRules = [
     'BRA'   => ['brasileirão', 'brasileirao', 'copa do brasil', 'flamengo', 'palmeiras', 'sao paulo', 'são paulo', 'corinthians', 'santos', 'gremio', 'grêmio', 'internacional', 'cruzeiro', 'atletico mineiro', 'atlético mineiro', 'vitória', 'rb bragantino', 'vasco da gama', 'botafogo', 'fluminense', 'bahia', 'fortaleza'],
     'URU'   => ['primera división', 'progreso', 'danubio', 'boston river', 'cerro', 'defensor sporting', 'torque', 'peñarol', 'nacional uru', 'juventud', 'deportivo maldonado'],
     'PE'    => ['liga 1', 'universitario', 'alianza lima', 'sporting cristal', 'melgar', 'los chankas', 'utc cajamarca', 'deportivo garcilaso', 'juan pablo ii', 'cienciano', 'cusco'],
+    'RU'    => ['copa de rusia', 'rusia', 'russian', 'premier league rusa', 'cska', 'zenit', 'spartak', 'rostov', 'lokomotiv', 'krasnodar', 'dinamo moscú', 'dinamo moscu', 'rubin kazan'],
+    'PY'    => ['copa de primera', 'paraguay', 'olimpia', 'cerro porteño', 'cerro porteno', 'libertad', 'guarani', 'sportivo trinidense', '2 de mayo', 'deportivo recoleta', 'rubio ñú', 'rubio nu', 'sportivo san lorenzo', 'luqueño', 'luqueno', 'tacuary', 'general caballero', 'nacional py'],
     'PARAG' => ['copa de primera', 'paraguay', 'olimpia', 'cerro porteño', 'libertad', 'guarani', 'sportivo trinidense', '2 de mayo', 'deportivo recoleta'],
     'CH'    => ['primera división', 'primera division', 'colo-colo', 'universidad de chile', 'u catolica', 'ñublense', 'everton chile', 'deportes limache', 'deportes concepción', 'coquimbo', 'huachipato'],
     'ECUA'  => ['ligapro', 'ecuador', 'ldu quito', 'barcelona sc', 'emelec', 'independiente del valle'],
@@ -103,18 +105,36 @@ function isBlacklistedStreamUrl($url, $blacklistedStreams) {
     return false;
 }
 
+function fetchSourceUrl($url) {
+    if (function_exists('curl_init')) {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Referer: https://futbollibretv.sx/']);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        if (!empty($result)) return $result;
+    }
+    
+    $ctx = stream_context_create([
+        'http' => [
+            'timeout' => 15,
+            'header' => "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\r\n" .
+                        "Referer: https://futbollibretv.sx/\r\n"
+        ],
+        'ssl' => ['verify_peer' => false, 'verify_peer_name' => false]
+    ]);
+    return @file_get_contents($url, false, $ctx);
+}
+
 echo "[" . date('Y-m-d H:i:s') . "] Conectando a la fuente en vivo...\n";
 
-$ctx = stream_context_create([
-    'http' => [
-        'timeout' => 15,
-        'header' => "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\r\n" .
-                    "Referer: https://futbollibretv.sx/\r\n"
-    ],
-    'ssl' => ['verify_peer' => false, 'verify_peer_name' => false]
-]);
-
-$js = @file_get_contents(SOURCE_URL, false, $ctx);
+$js = fetchSourceUrl(SOURCE_URL);
 if (!$js || !preg_match('/(?:const|var|let)\s+EVENTOS_DATA\s*=\s*(\[[\s\S]*?\]);/i', $js, $matches)) {
     die("❌ Error al descargar o analizar eventos desde " . SOURCE_URL . "\n");
 }
