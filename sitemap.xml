@@ -4,8 +4,8 @@
     <!-- Homepage -->
     <url>
         <loc>https://futbollibre-tv.sx/</loc>
-        <lastmod>2026-09-02</lastmod>
-        <changefreq>hourly</changefreq>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>always</changefreq>
         <priority>1.0</priority>
         <!-- Hreflang annotations for target countries -->
         <xhtml:link rel="alternate" hreflang="es" href="https://futbollibre-tv.sx/" />
@@ -16,5 +16,28 @@
         <xhtml:link rel="alternate" hreflang="es-EC" href="https://futbollibre-tv.sx/" />
         <xhtml:link rel="alternate" hreflang="es-AR" href="https://futbollibre-tv.sx/" />
         <xhtml:link rel="alternate" hreflang="es-CL" href="https://futbollibre-tv.sx/" />
+        <xhtml:link rel="alternate" hreflang="es-UY" href="https://futbollibre-tv.sx/" />
+        <xhtml:link rel="alternate" hreflang="es-US" href="https://futbollibre-tv.sx/" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://futbollibre-tv.sx/" />
+    </url>
+
+    <!-- Trust & Legal Pages (Google Core Update & EEAT Compliance) -->
+    <url>
+        <loc>https://futbollibre-tv.sx/aviso-legal.html</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://futbollibre-tv.sx/politica-privacidad.html</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://futbollibre-tv.sx/contacto.html</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
     </url>
 </urlset>

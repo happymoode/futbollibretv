@@ -4,14 +4,14 @@
 
 const STREAM_CONFIG = {
     // Dominio activo del servidor de streaming / embed
-    activeDomain: "",
+    activeDomain: "streamtp99a.sbs",
     
     // Ruta base del reproductor PHP
-    basePath: "",
+    basePath: "/global1.php?stream=",
     
     // Dominio de respaldo (Fallback)
-    fallbackDomain: "",
-    fallbackPath: "",
+    fallbackDomain: "streamtp-golden1.click",
+    fallbackPath: "/global1.php?stream=",
     
     // Parámetros del reproductor iframe
     allowFullscreen: true,
